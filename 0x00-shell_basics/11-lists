@@ -1,2 +1,2 @@
 #!/bin/bash
-cd -a -l -n . .. /boot
+cd -a -l . .. /boot
