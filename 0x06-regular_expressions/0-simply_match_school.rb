@@ -1,3 +1,3 @@
 #!/usr/bin/env ruby
 
-/Holberton/
+puts 'Holberton'
