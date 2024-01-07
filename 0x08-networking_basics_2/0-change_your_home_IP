@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Specify the desired mappings
+LOCALHOST_IP="127.0.0.2"
+FACEBOOK_IP="8.8.8.8"
+
+# Backup the current hosts file
+sudo cp /etc/hosts /etc/hosts.bak
+
+# Update the /etc/hosts file
+sudo bash -c "echo '$LOCALHOST_IP localhost' >> /etc/hosts"
+sudo bash -c "echo '$FACEBOOK_IP facebook.com' >> /etc/hosts"
+
+echo "Host configurations updated:"
+cat /etc/hosts
