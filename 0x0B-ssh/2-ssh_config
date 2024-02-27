@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #
 
-div ubuntu
-    HostName 98.98.98.98
-    User ubuntu
+Host * 
     IdentityFile ~/.ssh/school
+    PasswordAuthentication No
