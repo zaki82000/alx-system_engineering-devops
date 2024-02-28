@@ -13,5 +13,3 @@ username="$3"
 SSH_path="$4"
 
 scp -o StrictHostKeyChecking=no -i "$SSH_path" "$username"@"$server_ip" "$file_path":~/
-
-ssh ubuntu@8.8.8.8 -i /vagrant/sylvain 
