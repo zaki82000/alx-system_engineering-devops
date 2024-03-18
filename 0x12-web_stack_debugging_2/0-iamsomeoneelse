@@ -10,4 +10,4 @@ fi
 argument=$1
 
 # Do something with the argument
-echo "The argument provided is: $argument"
+echo "$argument"
