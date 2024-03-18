@@ -1,4 +1,6 @@
-sudo sysctl -w net.ipv4.ip_forward=1
-sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
-sudo iptables-save > /etc/iptables/rules.v4
-
+sudo nano /etc/ufw/before.rules
+*nat
+:PREROUTING ACCEPT [0:0]
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+COMMIT
+sudo ufw reload
