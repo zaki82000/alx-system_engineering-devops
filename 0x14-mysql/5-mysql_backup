@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # This Bash script automates the process of creating a backup of all databases in a MySQL server
 # and compressing it into a tar.gz archive with a filename formatted as day-month-year.tar.gz.
 
