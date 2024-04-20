@@ -1,22 +1,15 @@
-# 2-app_server-nginx_config
-
-# Default server configuration
 server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    # Server name can be your domain name or IP address
-    server_name _;
-
-    # Define location for the /airbnb-onepage/ route
-    location /airbnb-onepage/ {
-        # Proxy requests to the process listening on port 5000
-        proxy_pass http://localhost:5000/;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-
-    # Additional server configurations can be added here if needed
+        listen 80 default_server;
+	listen [::]:80 default_server;
+	add_header X-Served-By "2177-web-01";
+	root /var/www/html;
+	index index.html index.htm;
+	location /airbnb-onepage/ {
+		alias ~/Airbnb_clone_v2/;
+		index index.html index.htm;
+		proxy_pass http://0.0.0.0:5000;
+	}
+	rewrite ^/redirect_me https://github.com/EstephaniaCalvoC/ permanent;
+        error_page 404 /my_404.html;
+        location = /my_404.html {root /usr/share/nginx/html; internal;}
 }
