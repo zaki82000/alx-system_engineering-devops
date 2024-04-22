@@ -4,23 +4,24 @@ How many subs?
 """
 import requests
 
+
 def number_of_subscribers(subreddit):
-    """
-    Retrieves the number of subscribers for a given subreddit.
+    """queries the Reddit API and returns the number of subscribers
+    (not active users, total subscribers) for a given subreddit."""
 
-    Parameters:
-    - subreddit (str): The name of the subreddit.
+    url = f'http://www.reddit.com/r/{subreddit}/about.json'
 
-    Returns:
-    - int: The number of subscribers for the subreddit. Returns 0 if the subreddit is invalid.
-    """
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': '0x16-api_advanced:project: v1.0.0'}  # Set a custom User-Agent
-    response = requests.get(url, headers=headers)
-    
-    if response.status_code == 200:
-        data = response.json()
-        subscribers = data['data']['subscribers']
-        return subscribers
-    else:
+    headers = {
+        'User-Agent': '0x16-api_advanced:project: v1.0.0'
+    }
+
+    res = requests.get(
+            url,
+            headers,
+            allow_redirects=False
+        )
+
+    if res.status_code != 200:
         return 0
+
+    return res.json().get("data", {}).get("subscribers", 0)
